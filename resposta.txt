@@ -1,0 +1,46 @@
+
+# *******************************************************
+# Script para Gerenciamento de Usuários e Grupos no Linux
+# *******************************************************
+#
+# Este script executa uma série de operações para criação e modificação de 
+# usuários e grupos no sistema Linux, incluindo:
+# 1) Criação de grupos exemplo e teste.
+# 2) Criação de um usuário "fulano" com configuração específica.
+# 3) Inclusão do usuário "fulano" no grupo "teste".
+# 4) Troca de senha do usuário "fulano".
+# 5) Teste de login com o usuário "fulano".
+# 6) Bloqueio da conta de usuário "fulano".
+# 7) Remoção do usuário "fulano" e seu diretório home.
+# 8) Criação do usuário "aluno2" e sua inclusão nos grupos exemplo e teste.
+#
+# ** Certifique-se de executar este script com privilégios de root ou sudo. **
+#
+# *******************************************************
+
+# 1) Criar o grupo exemplo
+groupadd exemplo
+
+# 2) Criar o grupo teste
+groupadd teste
+
+# 3) Criar o usuário fulano utilizando o comando useradd
+useradd -m -d /home/fulano -s /bin/bash -g exemplo fulano
+
+# 4) Insira o usuário fulano no grupo teste
+usermod -a -G teste fulano
+
+# 5) Trocar a senha do usuário fulano
+passwd fulano
+
+# 6) Teste a conta fulano realizando o login
+# su - fulano  # (Para realizar o login como fulano)
+
+# 7) Bloquear o usuário fulano
+passwd -l fulano
+
+# 8) Remover o usuário fulano junto com sua pasta home
+userdel -r fulano
+
+# 9) Criar o usuário aluno2 e inseri-lo nos grupos exemplo e teste
+useradd -m -d /home/aluno2 -s /bin/bash -G exemplo,teste aluno2
